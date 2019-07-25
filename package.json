@@ -1,13 +1,26 @@
 {
 	"name": "mediatr",
 	"displayName": "MediatR",
-	"publisher": "delphiak",
 	"description": "Provides useful extensions for work with MediatR in C#",
+	"publisher": "delphiak",
+	"contributors": [
+		"Łukasz Krzykowski"
+	],
+	"license": "MIT",
 	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.36.0"
+	"keywords": [
+		"MediatR"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/delphiak/vscode-mediatr"
+	},
+	"icon": "images/marketplace-icon.png",
+	"engines": {	
+		"vscode": "^1.36.0" 
 	},
 	"categories": [
+		"Programming Languages",
 		"Other"
 	],
 	"activationEvents": [
