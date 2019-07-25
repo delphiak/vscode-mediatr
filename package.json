@@ -15,6 +15,13 @@
 		"type": "git",
 		"url": "https://github.com/delphiak/vscode-mediatr"
 	},
+	"badges": [
+		{
+			"url": "https://travis-ci.org/delphiak/vscode-mediatr.svg?branch=master",
+			"href": "https://travis-ci.org/delphiak/vscode-mediatr",
+			"description": "master status"
+		}
+	],
 	"icon": "images/marketplace-icon.png",
 	"engines": {	
 		"vscode": "^1.36.0" 
