@@ -2,8 +2,8 @@
 
 Provides useful extensions for work with MediatR in C#
 
-###Capabilities
+### Capabilities
 * Navigate to command/event handlers via "Go to implementation"
 
-###Roadmap
+### Roadmap
 There is none for now. Feel free to contribute!
