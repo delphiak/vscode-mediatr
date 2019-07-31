@@ -23,8 +23,8 @@
 		}
 	],
 	"icon": "images/marketplace-icon.png",
-	"engines": {	
-		"vscode": "^1.36.0" 
+	"engines": {
+		"vscode": "^1.36.0"
 	},
 	"categories": [
 		"Programming Languages",
@@ -33,15 +33,15 @@
 	"activationEvents": [
 		"onLanguage:csharp"
 	],
-	"main": "./out/extension.js",
+	"main": "./out/main",
 	"contributes": {
 		"configuration": {
 			"title": "MediatR",
 			"properties": {
-				"mediatr.goToImplementationTrigger": {
-					"type": "string",					
+				"mediatr.handlerImplementationTrigger": {
+					"type": "string",
 					"default": "(Command|Event)",
-					"description": "Implementation provider will only be triggered if item matches this regular expression"
+					"description": "Implementation provider for Command/Event handler will only be triggered if item matches this regular expression"
 				}
 			}
 		}
