@@ -1,5 +1,5 @@
 import * as vsc from 'vscode';
-import { HandlerImplementationProvider } from './providers/handlerImplementationProvider';
+import { HandlerImplementationProvider } from './providers/handlerImplementationProvider/handlerImplementationProvider';
 import { ExtensionConfigProvider } from './config/extensionConfig';
 
 export class Extension {
