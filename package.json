@@ -23,8 +23,8 @@
 		}
 	],
 	"icon": "images/marketplace-icon.png",
-	"engines": {	
-		"vscode": "^1.36.0" 
+	"engines": {
+		"vscode": "^1.36.0"
 	},
 	"categories": [
 		"Programming Languages",
@@ -39,7 +39,7 @@
 			"title": "MediatR",
 			"properties": {
 				"mediatr.handlerImplementationTrigger": {
-					"type": "string",					
+					"type": "string",
 					"default": "(Command|Event)",
 					"description": "Implementation provider for Command/Event handler will only be triggered if item matches this regular expression"
 				}
