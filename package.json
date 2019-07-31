@@ -33,7 +33,7 @@
 	"activationEvents": [
 		"onLanguage:csharp"
 	],
-	"main": "./out/src/main",
+	"main": "./out/main",
 	"contributes": {
 		"configuration": {
 			"title": "MediatR",

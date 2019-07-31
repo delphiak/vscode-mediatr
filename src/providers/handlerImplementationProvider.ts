@@ -36,7 +36,7 @@ export class HandlerImplementationProvider implements vsc.ImplementationProvider
 	
 	private async getContent(fileUri: vsc.Uri) {
 		const res = await fs.readFile(fileUri.path);
-		const buffer = new Buffer(res);
+		const buffer = Buffer.from(res);
 		return buffer.toString();
 	}
 	
