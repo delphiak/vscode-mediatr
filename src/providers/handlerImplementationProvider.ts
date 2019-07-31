@@ -1,6 +1,6 @@
 import * as vsc from 'vscode';
 import * as cfg from '../config/extensionConfig';
-const fs = require('fs').promises;
+import * as fs from 'fs';
 
 export class HandlerImplementationProvider implements vsc.ImplementationProvider {
 
@@ -19,7 +19,7 @@ export class HandlerImplementationProvider implements vsc.ImplementationProvider
 			var files = await vsc.workspace.findFiles("**/*.cs");
 			
 			for (const fileUri of files) {
-				var location = await this.getLocation(queryItem, fileUri);
+				var location = this.getLocation(queryItem, fileUri);
 				if (location) {
 					locations.push(location);
 				}
@@ -34,14 +34,14 @@ export class HandlerImplementationProvider implements vsc.ImplementationProvider
 		return document.getText(range);
 	}
 	
-	private async getContent(fileUri: vsc.Uri) {
-		const res = await fs.readFile(fileUri.path);
+	private getContent(fileUri: vsc.Uri) {
+		const res = fs.readFileSync(fileUri.path);
 		const buffer = Buffer.from(res);
 		return buffer.toString();
 	}
 	
-	private async getLocation(item: string, fileUri: vsc.Uri) {
-		const content = await this.getContent(fileUri);
+	private getLocation(item: string, fileUri: vsc.Uri) {
+		const content = this.getContent(fileUri);
 		const implementationLine = this.getImplementationLine(item, content);
 		if (implementationLine) {
 			const position = new vsc.Position(implementationLine, 0);
