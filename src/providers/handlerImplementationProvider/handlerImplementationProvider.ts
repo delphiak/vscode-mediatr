@@ -1,6 +1,7 @@
 import * as vsc from 'vscode';
-import * as cfg from '../config/extensionConfig';
+import * as cfg from '../../config/extensionConfig';
 import * as fs from 'fs';
+import { HandlerImplementationLineLocator } from './handlerImplementationLineLocator';
 
 export class HandlerImplementationProvider implements vsc.ImplementationProvider {
 
@@ -8,7 +9,9 @@ export class HandlerImplementationProvider implements vsc.ImplementationProvider
 		private configProvider: cfg.ExtensionConfigProvider
 	) { }
 
-	get config() { return this.configProvider.get(); }
+	private handlerImplementationLineLocator = new HandlerImplementationLineLocator();
+
+	private get config() { return this.configProvider.get(); }
 
 	public async provideImplementation(document: vsc.TextDocument, position: vsc.Position, _token: vsc.CancellationToken): Promise<vsc.Location[]> {
 		const locations: vsc.Location[] = [];
@@ -42,7 +45,7 @@ export class HandlerImplementationProvider implements vsc.ImplementationProvider
 	
 	private getLocation(item: string, fileUri: vsc.Uri) {
 		const content = this.getContent(fileUri);
-		const implementationLine = this.getImplementationLine(item, content);
+		const implementationLine = this.handlerImplementationLineLocator.getImplementationLine(item, content);
 		if (implementationLine) {
 			const position = new vsc.Position(implementationLine, 0);
 			return new vsc.Location(fileUri, position);	
@@ -51,14 +54,4 @@ export class HandlerImplementationProvider implements vsc.ImplementationProvider
 		}
 	}
 	
-	private getImplementationLine(item: string, content: string) {
-		const basicRegex = "Handle\\s*\\(\\s*";
-		const handleRegex = new RegExp(basicRegex + item, "gm");
-		const match = handleRegex.exec(content);
-		if (match) {
-			const until = content.substr(0, match.index);
-			const linesMatch = until.match(/\n/gi);
-			return linesMatch ? linesMatch.length : null;
-		}
-	}
 }
