@@ -2,14 +2,11 @@ language: node_js
 node_js:
   - "10.16.0"
 
-os:
-  - osx
-  - linux
-
-sudo: none
-
-services:
-  - xvfb
+matrix:
+  include:
+  - os: osx
+  - os: linux
+    services: xvfb
 
 env:
   - NODE_ENV="test"
